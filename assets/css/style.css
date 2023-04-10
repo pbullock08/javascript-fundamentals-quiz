@@ -2,6 +2,7 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+/*styling for header*/
 header {
     height: 75px;
 }
@@ -17,7 +18,8 @@ header {
     padding: 25px;
 }
 
-#starting-page {
+/*styling for cover page*/
+#cover-page {
     text-align: center;
 }
 
@@ -27,11 +29,6 @@ header {
     color: white;
     border-radius: 5px;
 }
-
-/* styling for starter page*/
-
-
-
 
 /* styling for questions*/
 
