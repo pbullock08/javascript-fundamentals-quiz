@@ -26,12 +26,37 @@ header {
 .start-quiz {
     padding: 5px;
     background-color: #361E75;
-    color: white;
+    color: #ffffff;
     border-radius: 5px;
 }
 
 /* styling for questions*/
+.quiz {
+   text-align: left;
+   margin-left: 25%;
+   margin-right: 25%;
+   display: none;
+}
 
+.quiz h4 {
+    margin: 5px;
+}
+
+#choice1, #choice2, #choice3, #choice4 {
+    display: block;
+    width: 20%;
+    padding: 5px;
+    background-color: #361E75;
+    color: #ffffff;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.correct, .wrong {
+    border-top: solid 1px #3e3c3c;
+    margin-top: 25px;
+    color: #3e3c3c;
+}
 
 
 /* styling for high score logging*/

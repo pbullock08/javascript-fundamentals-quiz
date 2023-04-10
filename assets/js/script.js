@@ -6,7 +6,7 @@ var timeEl = document.querySelector("#timer.card");
 var timeLeft = 75;
 
 function setTime() {
-    var timerInterval = setInterval(function () {
+    var timerInterval = setInterval(function() {
         timeLeft--;
         timeEl.textContent = "Time: " + timeLeft;
 
@@ -16,11 +16,24 @@ function setTime() {
         }
 
     }, 1000); 
-}
 
-//unhide first question 
+    var coverPage = document.querySelector("#cover-page");
+    coverPage.innerHTML = "";
+
+    var questions = document.querySelector(".quiz")
+    questions.setAttribute ("style", "display:block")
+};
 
 //add additional question and answers 
+var choices = document.querySelector("#choices");
+var choice1 = document.querySelector("#choice1");
+choices.addEventListener("click", selectAnswer);
+
+function selectAnswer() {
+    if (choice1.clicked == true) {
+        alert("Hello World!")
+    }
+}
 
 // var question = document.querySelector(".question-and-answers");
 
@@ -34,73 +47,88 @@ function setTime() {
 //     question.children[1].children[3].textContent = "square brackets";
 // }
 
-var questions = document.createElement("p");
-var optionsEl = document.createElement("ol");
-var options = document.createElement("li");
 
-var quizKey = [
-    {
-        question: "Commonly used data types DO NOT include:",
-        options: {
-            1: "strings", 
-            2: "booleans", 
-            3: "alerts", 
-            4: "numbers"
-        },
-        answer: "alerts"
-    },
 
-    {
-        question: "The condition in an if/else statement is enclosed with ________.",
-        options: {
-            1: "quotes", 
-            2: "curly brackets", 
-            3: "parenthesis", 
-            4: "square brackets"
-        },
-        answer: "curly brackets"
-    },
+// var quizKey = [
+//     {
+//         question: "Commonly used data types DO NOT include:",
+//         choice1: "strings", 
+//         choice2: "booleans", 
+//         choice3: "alerts", 
+//         choice4: "numbers",
+//         answer: "alerts",
+//     },
 
-    {
-        question: "Arrays in JavaScript can be used to store ________.",
-        options: {
-            1: "numbers and strings", 
-            2: "other arrays", 
-            3: "booleans", 
-            4: "all of the above"
-        },
-        answer: "all of the above"
-    },
+//     {
+//         question: "The condition in an if/else statement is enclosed with ________.",
+//         choice1: "quotes", 
+//         choice2: "curly brackets", 
+//         choice3: "parenthesis", 
+//         choice4: "square brackets",
+//         answer: "curly brackets",
+//     },
 
-    {
-        question: "String values must be enclosed within ________ when being assigned to values.",
-        options: {
-            1: "commas", 
-            2: "curly brackets", 
-            3: "quotes", 
-            4: "parenthesis"
-        },
-        answer: "quotes"
-    },
+//     {
+//         question: "Arrays in JavaScript can be used to store ________.",
+//         choice1: "numbers and strings", 
+//         choice2: "other arrays", 
+//         choice3: "booleans", 
+//         choice4: "all f the above",
+//         answer: "all of the above",
+//     },
 
-    {
-        question: "A very useful tool used during development and debuggin for printing content to the debugger is:",
-        options: {
-            1: "JavaScript", 
-            2: "terminal/bash", 
-            3: "for loops", 
-            4: "console log"
-        },
-        answer: "console log"
-    },
-]
+//     {
+//         question: "String values must be enclosed within ________ when being assigned to values.",
+//         choice1: "commas", 
+//         choice2: "curly brackets", 
+//         choice3: "quotes", 
+//         choice4: "parenthesis",
+//         answer: "quotes",
+//     },
 
-for (var i=0; i < quizKey.length; i++) {
-    questions.textContent = quizKey[i].question;
-    document.body.appendChild(questions);
-    options
-    }
+//     {
+//         question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+//         choice1: "JavaScript", 
+//         choice2: "terminal/bash", 
+//         choice3: "for loops", 
+//         choice4: "console log",
+//         answer: "console log",
+//     },
+// ];
 
+// var boxEl = document.querySelector("#content-box");
+// boxEl.addEventListener("click", switchContent);
+
+// function switchContent() {
+//     boxEl.innerHTML = "";
+
+//     var questions = document.createElement("h4");
+//     var optionsEl = document.createElement("ol");
+//     var option1 = document.createElement("li");
+//     var option2 = document.createElement("li");
+//     var option3 = document.createElement("li");
+//     var option4 = document.createElement("li");
+//     var questionIndex = 0;
+
+//     questions.textContent = quizKey[questionIndex].question;
+//     option1.textContent = quizKey[questionIndex].choice1;
+//     option2.textContent = quizKey[questionIndex].choice2;
+//     option3.textContent = quizKey[questionIndex].choice3;
+//     option4.textContent = quizKey[questionIndex].choice4;
+
+//     boxEl.appendChild(questions);
+//     boxEl.appendChild(optionsEl);
+//     boxEl.children[1].appendChild(option1);
+//     boxEl.children[1].appendChild(option2);
+//     boxEl.children[1].appendChild(option3);
+//     boxEl.children[1].appendChild(option4);
+
+//     console.log(quizKey[questionIndex]);
+//     questionIndex++;
+//     if(questionIndex >= quizKey.length) {
+//         questionIndex = 0;
+//     }
+// };
 
 
 
