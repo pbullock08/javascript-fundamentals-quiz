@@ -1,4 +1,22 @@
 //add eventlistener to start quiz and timer while hiding first question
+var startQuiz = document.querySelector(".start-quiz");
+startQuiz.addEventListener("click", setTime);
+
+var timeEl = document.querySelector("#timer.card");
+var timeLeft = 75;
+
+function setTime() {
+    var timerInterval = setInterval(function () {
+        timeLeft--;
+        timeEl.textContent = "Time: " + timeLeft;
+
+        if (timeLeft === 0) {
+            clearInterval(timerInterval);
+            //display high score log 
+        }
+
+    }, 1000);
+}
 
 //unhide first question 
 
@@ -49,7 +67,7 @@ for (var i=0; i < question1.length; i++) {
     //subtract 10 seconds from time 
 //}
 
-//log score to local storage 
+//log score to local storage after last question or if time = 0
 
 //display local storage of high scores in order of  
 
