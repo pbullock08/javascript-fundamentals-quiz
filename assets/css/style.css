@@ -42,9 +42,24 @@ header {
     margin: 5px;
 }
 
-#choice1, #choice2, #choice3, #choice4 {
+#choices {
+    display: inline-block;
+    padding: 5px;
+}
+
+.choice1, .choice2, .choice3, .choice4 {
     display: block;
-    width: 35%;
+    width: 100%;
+    padding: 5px;
+    background-color: #361E75;
+    color: #ffffff;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.choice11, .choice21, .choice31, .choice41 {
+    display: block;
+    width: 100%;
     padding: 5px;
     background-color: #361E75;
     color: #ffffff;
@@ -56,6 +71,7 @@ header {
     border-top: solid 1px #3e3c3c;
     margin-top: 25px;
     color: #3e3c3c;
+    display: none;
 }
 
 
