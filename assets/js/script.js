@@ -25,15 +25,92 @@ function setTime() {
 };
 
 //add additional question and answers 
-var choices = document.querySelector("#choices");
-var choice1 = document.querySelector("#choice1");
-choices.addEventListener("click", selectAnswer);
+var quizKey = [
+        {
+            question: "Commonly used data types DO NOT include:",
+            choice1: "1. strings", 
+            choice2: "2. booleans", 
+            choice3: "3. alerts", 
+            choice4: "4. numbers",
+            answer: "alerts",
+        },
+    
+        {
+            question: "The condition in an if/else statement is enclosed with ________.",
+            choice1: "1. quotes", 
+            choice2: "2. curly brackets", 
+            choice3: "3. parenthesis", 
+            choice4: "4. square brackets",
+            answer: "curly brackets",
+        },
+    
+        {
+            question: "Arrays in JavaScript can be used to store ________.",
+            choice1: "1. numbers and strings", 
+            choice2: "2. other arrays", 
+            choice3: "3. booleans", 
+            choice4: "4. all f the above",
+            answer: "all of the above",
+        },
+    
+        {
+            question: "String values must be enclosed within ________ when being assigned to values.",
+            choice1: "1. commas", 
+            choice2: "2. curly brackets", 
+            choice3: "3. quotes", 
+            choice4: "4. parenthesis",
+            answer: "quotes",
+        },
+    
+        {
+            question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+            choice1: "1. JavaScript", 
+            choice2: "2. terminal/bash", 
+            choice3: "3. for loops", 
+            choice4: "4. console log",
+            answer: "console log",
+        },
+    ];
+    
+    var boxEl = document.querySelector(".quiz");
+    boxEl.addEventListener("click", switchContent);
+    
+    function switchContent() {
+        boxEl.innerHTML = "";
+    
+        var questions = document.querySelector("h3.question");
+        var option1 = document.querySelector("#choice1");
+        var option2 = document.querySelector("#choice2");
+        var option3 = document.querySelector("#choice3");
+        var option4 = document.querySelector("#choice4");
+        var questionIndex = 0;
+    
+        questions.textContent = quizKey[questionIndex].question;
+        option1.textContent = quizKey[questionIndex].choice1;
+        option2.textContent = quizKey[questionIndex].choice2;
+        option3.textContent = quizKey[questionIndex].choice3;
+        option4.textContent = quizKey[questionIndex].choice4;
+    
+        questions.appendChild(questions);
+        option1.appendChild(option1);
+        option2.appendChild(option2);
+        option3.appendChild(option3);
+        option4.appendChild(option4);
+    
+        console.log(quizKey[questionIndex]);
+        questionIndex++;
+        if(questionIndex >= quizKey.length) {
+            questionIndex = 0;
+        }
+    };
 
-function selectAnswer() {
-    if (choice1.clicked == true) {
-        alert("Hello World!")
-    }
-}
+// choices.addEventListener("click", selectAnswer);
+
+// function selectAnswer() {
+//     if (choice1.clicked == true) {
+//         alert("Hello World!")
+//     }
+// }
 
 // var question = document.querySelector(".question-and-answers");
 
