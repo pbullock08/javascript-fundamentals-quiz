@@ -69,40 +69,37 @@ var quizKey = [
             choice3: "3. for loops", 
             choice4: "4. console log",
             answer: "console log",
-        },
+        }
     ];
     
+    for (var i=0; i < quizKey; i++) {
+        console.log(quizKey[i]);
+    }
+
     var boxEl = document.querySelector(".quiz");
     boxEl.addEventListener("click", switchContent);
     
     function switchContent() {
-        boxEl.innerHTML = "";
-    
-        var questions = document.querySelector("h3.question");
+        var questions = document.querySelector(".question");
         var option1 = document.querySelector("#choice1");
         var option2 = document.querySelector("#choice2");
         var option3 = document.querySelector("#choice3");
         var option4 = document.querySelector("#choice4");
-        var questionIndex = 0;
-    
+        var questionIndex = 1;
+        
         questions.textContent = quizKey[questionIndex].question;
         option1.textContent = quizKey[questionIndex].choice1;
         option2.textContent = quizKey[questionIndex].choice2;
         option3.textContent = quizKey[questionIndex].choice3;
         option4.textContent = quizKey[questionIndex].choice4;
-    
-        questions.appendChild(questions);
-        option1.appendChild(option1);
-        option2.appendChild(option2);
-        option3.appendChild(option3);
-        option4.appendChild(option4);
-    
         console.log(quizKey[questionIndex]);
         questionIndex++;
         if(questionIndex >= quizKey.length) {
             questionIndex = 0;
         }
-    };
+    }
+        
+      
 
 // choices.addEventListener("click", selectAnswer);
 
