@@ -57,16 +57,6 @@ header {
     margin-bottom: 5px;
 }
 
-.choice11, .choice21, .choice31, .choice41 {
-    display: block;
-    width: 100%;
-    padding: 5px;
-    background-color: #361E75;
-    color: #ffffff;
-    border-radius: 5px;
-    margin-bottom: 5px;
-}
-
 .correct, .wrong {
     border-top: solid 1px #3e3c3c;
     margin-top: 25px;
@@ -76,7 +66,21 @@ header {
 
 
 /* styling for high score logging*/
+.high-score {
+    text-align: center;  
+}
 
+.submit-initials {
+    display: inline-block;
 
+}
+
+.submit {
+    padding: 5px;
+    background-color: darkorchid;
+    color: #ffffff;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
 
 /*styling for high score bank*/
