@@ -67,16 +67,29 @@ header {
 
 /* styling for high score logging*/
 .high-score {
-    text-align: center;  
+    text-align: left;
+    margin-left: 33%;
+    margin-right: 33%;
+    display: none;
 }
 
-.submit-initials {
-    display: inline-block;
+.high-score h3{
+    margin: 0px;
+    padding-bottom: 10px;
+}
 
+.finalscore {
+    padding-bottom: 10px;
+}
+
+.high-score div {
+    display: inline-block;
+    padding-right: 5px;
 }
 
 .submit {
     padding: 5px;
+    margin-left: 5px;
     background-color: darkorchid;
     color: #ffffff;
     border-radius: 5px;

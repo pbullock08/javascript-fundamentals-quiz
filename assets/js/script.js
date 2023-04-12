@@ -2,8 +2,9 @@
 var startQuiz = document.querySelector(".start-quiz");
 startQuiz.addEventListener("click", setTime);
 
-var timeEl = document.querySelector("#timer.card");
+var timeEl = document.querySelector("#timer");
 var timeLeft = 75;
+var timerInterval = 0;
 
 var quiz = document.querySelector(".quiz");
 
@@ -14,9 +15,8 @@ function setTime() {
 
         if (timeLeft === 0) {
             clearInterval(timerInterval);
-            //display high score log 
+            logScore();
         }
-
     }, 1000); 
 
     var coverPage = document.querySelector("#cover-page");
@@ -108,12 +108,18 @@ function select1() {
         alert ("clicked");
         correct.setAttribute("style", "display:block");
         questionIndex++;
+        if (questionIndex >= quizKey.length) {
+            logScore();
+        }
 
     } else {
         alert ("clicked");
         wrong.setAttribute("style", "display:block");
         timeLeft -= 10;
         questionIndex++;
+        if (questionIndex >= quizKey.length) {
+            logScore();
+        }
     }
 }
 
@@ -123,12 +129,18 @@ function select2() {
         alert ("clicked");
         correct.setAttribute("style", "display:block");
         questionIndex++;
+        if (questionIndex >= quizKey.length) {
+            logScore();
+        }
         
     } else {
         alert ("clicked");
         wrong.setAttribute("style", "display:block");
         timeLeft -= 10;
         questionIndex++;
+        if (questionIndex >= quizKey.length) {
+            logScore();
+        }
     }
 }
 
@@ -138,12 +150,18 @@ function select3() {
         alert ("clicked");
         correct.setAttribute("style", "display:block");
         questionIndex++;
+        if (questionIndex >= quizKey.length) {
+            logScore();
+        }
         
     } else {
         alert ("clicked");
         wrong.setAttribute("style", "display:block");
         timeLeft -= 10;
         questionIndex++;
+        if (questionIndex >= quizKey.length) {
+            logScore();
+        }
     }
 }
 
@@ -153,23 +171,60 @@ function select4() {
         alert ("clicked");
         correct.setAttribute("style", "display:block");
         questionIndex++;
+        if (questionIndex >= quizKey.length) {
+            logScore();
+        }
         
     } else {
         alert ("clicked");
         wrong.setAttribute("style", "display:block");
         timeLeft -= 10;
         questionIndex++;
+        if (questionIndex >= quizKey.length) {
+            logScore();
+        }
     }
 }
 
-function logHighScore() {
-    clearInterval(timerInterval);
-}
-
-
-
 //for last question when you click on an answer it stops time and then logs that time on page with input 
 
-//log score to local storage after last question or if time = 0
+function logScore() {
+    quiz.setAttribute ("style", "display:none");
+    var finalScore = document.querySelector(".finalscore");
+    clearInterval(timerInterval);
+    timeEl.textContent = "Time:" + timeLeft;
+    finalScore.textContent = "Your final score is " + timeLeft +".";
+    var highScore = document.querySelector(".high-score");
+    highScore.setAttribute ("style", "display:block");
+}
+
+//log score and initials to local storage
+var initialInput = document.querySelector("#initals");
+//var scoreInput = 
+var submit = document.querySelector(".submit");
+var userInitialsSpan = document.querySelector("user-initials");
+//var userScoreSpan = 
+
+function renderScore() {
+    var initials = localStorage.getItem("local-initials");
+    //var score = 
+
+    userInitialsSpan.textContent = initials;
+    //userScoreSpan.textContent = 
+}
+
+submit.addEventListener("click", function(event) {
+    //event.preventDefault
+    var intials = document.querySelector("#initals").value;
+    //var score = 
+
+    if (initials --- "") {
+        alert("Initials field cannot be blank.");
+    } else {
+        localStorage.setItem("local-initals", initials);
+        
+        renderScore();
+    }       
+});
 
 //display local storage of high scores in order of  
