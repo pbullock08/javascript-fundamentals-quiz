@@ -222,9 +222,8 @@ submit.addEventListener("click", function(event) {
         alert("Initials field cannot be blank.");
     } else {
         localStorage.setItem("local-initals", initials);
-        
-        renderScore();
     }       
 });
 
-//display local storage of high scores in order of  
+//display local storage of high scores
+renderScore();

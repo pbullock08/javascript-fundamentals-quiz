@@ -97,3 +97,32 @@ header {
 }
 
 /*styling for high score bank*/
+.score-bank {
+    text-align: left;
+    margin-left: 33%;
+    margin-right: 33%;
+    display: none;
+}
+
+.score-bank h3{
+    margin: 0px;
+    padding-bottom: 10px;
+}
+
+#scoredata {
+    background-color: #d7bfdc;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.back, .clear {
+    padding: 5px;
+    background-color: #361E75;
+    color: #ffffff;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.back {
+    margin-right: 5px;
+}
