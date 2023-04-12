@@ -50,7 +50,7 @@ var quizKey = [
         choice1: "1. numbers and strings", 
         choice2: "2. other arrays", 
         choice3: "3. booleans", 
-        choice4: "4. all f the above",
+        choice4: "4. all of the above",
         answer: "4. all of the above",
     },
         
@@ -104,28 +104,18 @@ function switchContent() {
 
 option1.addEventListener("click", select1);
 function select1() {
-    if (option1.textContent === quizKey[questionIndex.answer]) {
-        alert ("clicked");
-        correct.setAttribute("style", "display:block");
-        questionIndex++;
-        if (questionIndex >= quizKey.length) {
-            logScore();
-        }
-
-    } else {
-        alert ("clicked");
-        wrong.setAttribute("style", "display:block");
-        timeLeft -= 10;
-        questionIndex++;
-        if (questionIndex >= quizKey.length) {
-            logScore();
-        }
+    alert ("clicked");
+    wrong.setAttribute("style", "display:block");
+    timeLeft -= 10;
+    questionIndex++;
+    if (questionIndex >= quizKey.length) {
+        logScore();
     }
 }
 
 option2.addEventListener("click", select2);
 function select2() {
-    if (option2.textContent === quizKey[questionIndex.answer]) {
+    if (option2.textContent === "2. curly brackets") {
         alert ("clicked");
         correct.setAttribute("style", "display:block");
         questionIndex++;
@@ -146,7 +136,7 @@ function select2() {
 
 option3.addEventListener("click", select3);
 function select3() {
-    if (option3.textContent === quizKey[questionIndex.answer]) {
+    if (option3.textContent === "3. alerts" || option3.textContent === "3. quotes") {
         alert ("clicked");
         correct.setAttribute("style", "display:block");
         questionIndex++;
@@ -167,7 +157,7 @@ function select3() {
 
 option4.addEventListener("click", select4);
 function select4() {
-    if (option1.textContent === quizKey[questionIndex.answer]) {
+    if (option4.textContent === "4. all of the above" || option4.textContent === "4. console log") {
         alert ("clicked");
         correct.setAttribute("style", "display:block");
         questionIndex++;
