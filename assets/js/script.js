@@ -9,7 +9,7 @@ var timerInterval = 0;
 var quiz = document.querySelector(".quiz");
 
 function setTime() {
-    var timerInterval = setInterval(function() {
+    timerInterval = setInterval(function() {
         timeLeft--;
         timeEl.textContent = "Time: " + timeLeft;
 
@@ -106,9 +106,19 @@ option1.addEventListener("click", select1);
 function select1() {
     alert ("clicked");
     wrong.setAttribute("style", "display:block");
-    timeLeft -= 10;
+    if (timeLeft >= 10) {
+        timeLeft -= 10;
+    } else {
+        clearInterval(timerInterval);
+        logScore();
+    }
     questionIndex++;
     if (questionIndex >= quizKey.length) {
+        clearInterval(timerInterval);
+        logScore();
+    }
+    if (timeLeft === 0) {
+        clearInterval(timerInterval);
         logScore();
     }
 }
@@ -120,15 +130,30 @@ function select2() {
         correct.setAttribute("style", "display:block");
         questionIndex++;
         if (questionIndex >= quizKey.length) {
+            clearInterval(timerInterval);
+            logScore();
+        }
+        if (timeLeft === 0) {
+            clearInterval(timerInterval);
             logScore();
         }
         
     } else {
         alert ("clicked");
         wrong.setAttribute("style", "display:block");
-        timeLeft -= 10;
+        if (timeLeft >= 10) {
+            timeLeft -= 10;
+        } else {
+            clearInterval(timerInterval);
+            logScore();
+        }
         questionIndex++;
         if (questionIndex >= quizKey.length) {
+            clearInterval(timerInterval);
+            logScore();
+        }
+        if (timeLeft === 0) {
+            clearInterval(timerInterval);
             logScore();
         }
     }
@@ -141,15 +166,30 @@ function select3() {
         correct.setAttribute("style", "display:block");
         questionIndex++;
         if (questionIndex >= quizKey.length) {
+            clearInterval(timerInterval);
+            logScore();
+        }
+        if (timeLeft === 0) {
+            clearInterval(timerInterval);
             logScore();
         }
         
     } else {
         alert ("clicked");
         wrong.setAttribute("style", "display:block");
-        timeLeft -= 10;
+        if (timeLeft >= 10) {
+            timeLeft -= 10;
+        } else {
+            clearInterval(timerInterval);
+            logScore();
+        }
         questionIndex++;
         if (questionIndex >= quizKey.length) {
+            clearInterval(timerInterval);
+            logScore();
+        }
+        if (timeLeft === 0) {
+            clearInterval(timerInterval);
             logScore();
         }
     }
@@ -162,27 +202,41 @@ function select4() {
         correct.setAttribute("style", "display:block");
         questionIndex++;
         if (questionIndex >= quizKey.length) {
+            clearInterval(timerInterval);
+            logScore();
+        }
+        if (timeLeft === 0) {
+            clearInterval(timerInterval);
             logScore();
         }
         
     } else {
         alert ("clicked");
         wrong.setAttribute("style", "display:block");
-        timeLeft -= 10;
+        if (timeLeft >= 10) {
+            timeLeft -= 10;
+        } else {
+            clearInterval(timerInterval);
+            logScore();
+        }
         questionIndex++;
         if (questionIndex >= quizKey.length) {
+            clearInterval(timerInterval);
+            logScore();
+        }
+        if (timeLeft === 0) {
+            clearInterval(timerInterval);
             logScore();
         }
     }
 }
 
-//for last question when you click on an answer it stops time and then logs that time on page with input 
+//log time finished/zeroed out on page
 
 function logScore() {
     quiz.setAttribute ("style", "display:none");
     var finalScore = document.querySelector(".finalscore");
-    clearInterval(timerInterval);
-    timeEl.textContent = "Time:" + timeLeft;
+    timeEl.textContent = "Time: " + timeLeft;
     finalScore.textContent = "Your final score is " + timeLeft +".";
     var highScore = document.querySelector(".high-score");
     highScore.setAttribute ("style", "display:block");
@@ -190,7 +244,7 @@ function logScore() {
 
 //log score and initials to local storage
 var initialInput = document.querySelector("#initals");
-//var scoreInput = 
+var scoreInput = timeLeft;
 var submit = document.querySelector(".submit");
 var userInitialsSpan = document.querySelector("user-initials");
 //var userScoreSpan = 
@@ -199,7 +253,7 @@ function renderScore() {
     var initials = localStorage.getItem("local-initials");
     //var score = 
 
-    userInitialsSpan.textContent = initials;
+    //userInitialsSpan.textContent = initials;
     //userScoreSpan.textContent = 
 }
 
