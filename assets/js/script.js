@@ -105,7 +105,6 @@ function switchContent() {
 //assess user input for correct or wrong and log scores based on getting to the last question or timing out (time >= 0)
 option1.addEventListener("click", select1);
 function select1() {
-    alert ("clicked");
     wrong.setAttribute("style", "display:block");
     correct.setAttribute("style", "display:none");
     if (timeLeft >= 10) {
@@ -128,7 +127,6 @@ function select1() {
 option2.addEventListener("click", select2);
 function select2() {
     if (option2.textContent === "2. curly brackets") {
-        alert ("clicked");
         correct.setAttribute("style", "display:block");
         wrong.setAttribute("style", "display:none");
         questionIndex++;
@@ -140,9 +138,7 @@ function select2() {
             clearInterval(timerInterval);
             logScore();
         }
-        
     } else {
-        alert ("clicked");
         wrong.setAttribute("style", "display:block");
         correct.setAttribute("style", "display:none");
         if (timeLeft >= 10) {
@@ -166,7 +162,6 @@ function select2() {
 option3.addEventListener("click", select3);
 function select3() {
     if (option3.textContent === "3. alerts" || option3.textContent === "3. quotes") {
-        alert ("clicked");
         correct.setAttribute("style", "display:block");
         wrong.setAttribute("style", "display:none");
         questionIndex++;
@@ -178,9 +173,7 @@ function select3() {
             clearInterval(timerInterval);
             logScore();
         }
-        
     } else {
-        alert ("clicked");
         wrong.setAttribute("style", "display:block");
         correct.setAttribute("style", "display:none");
         if (timeLeft >= 10) {
@@ -204,7 +197,6 @@ function select3() {
 option4.addEventListener("click", select4);
 function select4() {
     if (option4.textContent === "4. all of the above" || option4.textContent === "4. console log") {
-        alert ("clicked");
         correct.setAttribute("style", "display:block");
         wrong.setAttribute("style", "display:none");
         questionIndex++;
@@ -216,9 +208,7 @@ function select4() {
             clearInterval(timerInterval);
             logScore();
         }
-        
     } else {
-        alert ("clicked");
         wrong.setAttribute("style", "display:block");
         correct.setAttribute("style", "display:none");
         if (timeLeft >= 10) {
@@ -247,6 +237,17 @@ function logScore() {
     finalScore.textContent = "Your final score is " + timeLeft +".";
     var highScore = document.querySelector(".high-score");
     highScore.setAttribute ("style", "display:block");
+}
+
+var choices = document.querySelector("#choices");
+var initialInput = document.querySelector("input");
+
+choices.addEventListener("mouseover", hideFeedback);
+initialInput.addEventListener("click", hideFeedback)
+
+function hideFeedback() {
+    correct.setAttribute("style", "display:none");
+    wrong.setAttribute("style", "display:none");
 }
 
 //set timeout for right or wrong display 
