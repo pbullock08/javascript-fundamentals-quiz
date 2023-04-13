@@ -6,6 +6,7 @@ var timeEl = document.querySelector("#timer");
 var timeLeft = 75;
 var timerInterval = 0;
 
+var coverPage = document.querySelector("#cover-page");
 var quiz = document.querySelector(".quiz");
 
 function setTime() {
@@ -19,7 +20,6 @@ function setTime() {
         }
     }, 1000); 
 
-    var coverPage = document.querySelector("#cover-page");
     coverPage.innerHTML = "";
 
     quiz.setAttribute ("style", "display:block");
@@ -73,14 +73,14 @@ var quizKey = [
     }
 ];
 
-var questions = document.querySelector(".question");
+var questionsEl = document.querySelector(".ask");
 var option1 = document.querySelector(".choice1");
 var option2 = document.querySelector(".choice2");
 var option3 = document.querySelector(".choice3");
 var option4 = document.querySelector(".choice4");
 
-var correct = document.querySelector(".correct")
-var wrong = document.querySelector(".wrong")
+var correct = document.querySelector(".correct");
+var wrong = document.querySelector(".wrong");
 
 //add additional question and answers to quiz
 var boxEl = document.querySelector(".quiz");
@@ -89,18 +89,12 @@ var questionIndex = 0;
 boxEl.addEventListener("click", switchContent);
 
 function switchContent() {
-    var questions = document.querySelector(".question");
-    var option1 = document.querySelector(".choice1");
-    var option2 = document.querySelector(".choice2");
-    var option3 = document.querySelector(".choice3");
-    var option4 = document.querySelector(".choice4");
-        
-    questions.textContent = quizKey[questionIndex].question;
+    questionsEl.textContent = quizKey[questionIndex].question;
     option1.textContent = quizKey[questionIndex].choice1;
     option2.textContent = quizKey[questionIndex].choice2;
     option3.textContent = quizKey[questionIndex].choice3;
     option4.textContent = quizKey[questionIndex].choice4;
-}
+};
 
 //assess user input for correct or wrong and log scores based on getting to the last question or timing out (time >= 0)
 option1.addEventListener("click", select1);
@@ -122,7 +116,7 @@ function select1() {
         clearInterval(timerInterval);
         logScore();
     }
-}
+};
 
 option2.addEventListener("click", select2);
 function select2() {
@@ -157,7 +151,7 @@ function select2() {
             logScore();
         }
     }
-}
+};
 
 option3.addEventListener("click", select3);
 function select3() {
@@ -192,7 +186,7 @@ function select3() {
             logScore();
         }
     }
-}
+};
 
 option4.addEventListener("click", select4);
 function select4() {
@@ -227,61 +221,117 @@ function select4() {
             logScore();
         }
     }
-}
+};
+
+var highScore = document.querySelector(".high-score");
+var finalScore = document.querySelector(".finalscore");
 
 //log time finished/zeroed out on page
 function logScore() {
     quiz.setAttribute ("style", "display:none");
-    var finalScore = document.querySelector(".finalscore");
     timeEl.textContent = "Time: " + timeLeft;
     finalScore.textContent = "Your final score is " + timeLeft +".";
-    var highScore = document.querySelector(".high-score");
     highScore.setAttribute ("style", "display:block");
-}
+};
 
 var choices = document.querySelector("#choices");
 var initialInput = document.querySelector("input");
 
 choices.addEventListener("mouseover", hideFeedback);
-initialInput.addEventListener("click", hideFeedback)
+initialInput.addEventListener("click", hideFeedback);
 
 function hideFeedback() {
     correct.setAttribute("style", "display:none");
     wrong.setAttribute("style", "display:none");
+};
+
+var scoreArray = [];
+var scoreDataEl = document.querySelector("#scoredata");
+
+//log score to webpage
+function displayScores() {
+    for (var i=0; i < scoreArray.length; i++) {
+        var score = scoreArray[i];
+
+        var li = document.createElement("li");
+        li.textContent = score.name + " - " + score.timeFinished;
+        //li.setAttribute("data-index", i);
+
+        scoreDataEl.appendChild(li);
+    }
+};
+console.log(displayScores());
+
+var scoreBankEl = document.querySelector("#score-bank");
+
+//get score out of local strorage 
+function renderScore() {
+    highScore.setAttribute("style", "display:none");
+    timeEl.setAttribute("style", "display:none");
+    coverPage.setAttribute("style", "display:none");
+    quiz.setAttribute("style", "display:none");
+    correct.setAttribute("style", "display:none");
+    wrong.setAttribute("style", "display:none");
+    viewScores.setAttribute("style", "display:none");
+    scoreBankEl.setAttribute("style", "display:block");
+
+    var loggedScores = JSON.parse(localStorage.getItem("scoreArray"));
+    
+    if (loggedScores !== null) {
+        scoreArray = loggedScores;
+    } else {
+        return;
+    }
+
+    displayScores();
 }
 
-//set timeout for right or wrong display 
-// setTimeout (function() {
-//     correct.setAttribute("style", "display:none");
-//     wrong.setAttribute("style", "display:none");
-// }, 1000);
+console.log(displayScores());
 
-//log score and initials to local storage
-var initialInput = document.querySelector("#initals");
-var scoreInput = timeLeft;
 var submit = document.querySelector(".submit");
-var userInitialsSpan = document.querySelector("user-initials");
-//var userScoreSpan = 
+var userScore = {
+    name: initialInput.value,
+    timeFinished: timeLeft
+};
 
+//once data is submitted it gets logged into local storage 
 submit.addEventListener("click", function(event) {
-    //event.preventDefault
-    var intials = document.querySelector("#initals").value;
-    //var score = 
+    //event.preventDefault();
+    highScore.innerHTML = "";
 
-    if (initials === "") {
-        alert("Initials field cannot be blank.");
+    if (userScore.name === "") {
+        //alert("Initials field cannot be blank.");
     } else {
-        localStorage.setItem("local-initals", initials);
-    }       
+        scoreArray.push(userScore);
+        localStorage.setItem("scoreArray", JSON.stringify(scoreArray));
+    }  
+
+    renderScore();
+    //logScore();
 });
 
-function renderScore() {
-    var initials = localStorage.getItem("local-initials");
-    //var score = 
+console.log(scoreArray);
+console.log(displayScores());
 
-    //userInitialsSpan.textContent = initials;
-    //userScoreSpan.textContent = 
-}
+//when you click go back it reloads the webpage 
+var goBack = document.querySelector(".back");
 
-//display high scores on page
-renderScore();
+goBack.addEventListener("click", function() {
+    location.reload()
+});
+
+//when you click clear scores it clears scores from display and local storage
+var clearScores = document.querySelector(".clear");
+
+clearScores.addEventListener("click", function() {
+    scoreDataEl.innerHTML="";
+    localStorage.removeItem("local-userScore");
+});
+
+var viewScores = document.querySelector("a");
+
+//when you click view scores you are taken to the highscores page 
+viewScores.addEventListener("click", function() {
+    renderScore();
+    //logScores();
+});

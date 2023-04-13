@@ -37,6 +37,7 @@ a:hover {
     background-color: #361E75;
     color: #ffffff;
     border-radius: 5px;
+    width: max-content;
 }
 
 .start-quiz:hover {
@@ -51,8 +52,9 @@ a:hover {
    display: none;
 }
 
-.quiz h4 {
+.ask{
     margin: 5px;
+    height: 50px;
 }
 
 #choices {
@@ -89,9 +91,9 @@ a:hover {
 
 /* styling for high score logging*/
 .high-score {
-    text-align: left;
-    margin-left: 33%;
-    margin-right: 33%;
+    margin-left: 25%;
+    margin-right: 25%;
+    text-align: center;
     display: none;
 }
 
@@ -137,6 +139,7 @@ a:hover {
 
 #scoredata {
     background-color: #d7bfdc;
+    margin-top: 0px;
     margin-bottom: 15px;
     width: 100%;
 }
@@ -157,6 +160,40 @@ a:hover {
     margin-right: 5px;
 }
 
-/* media query for display tablet*/
+/* media queries for tablet*/
+@media screen and (max-width: 992px) {
+    #cover-page p {
+        margin-bottom: 25px;
+       }
 
-/* media query for display phone*/
+   .quiz, .high-score, .correct, .wrong {
+    margin-left: 15%;
+    margin-right: 15%;
+   }
+}
+
+/* media queries for phone*/
+@media screen and (max-width: 778px) {
+   #cover-page p {
+    margin-bottom: 25px;
+   }
+   
+    .quiz, .high-score, .correct, .wrong, #score-bank {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .ask {
+        font-size: medium;
+        height: 60px;
+    }
+
+    input {
+        margin-bottom: 15px;
+    }
+    
+    .back, .clear {
+        display: block;
+        width: max-content;
+    }
+}
