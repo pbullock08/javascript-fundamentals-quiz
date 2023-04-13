@@ -262,6 +262,18 @@ var submit = document.querySelector(".submit");
 var userInitialsSpan = document.querySelector("user-initials");
 //var userScoreSpan = 
 
+submit.addEventListener("click", function(event) {
+    //event.preventDefault
+    var intials = document.querySelector("#initals").value;
+    //var score = 
+
+    if (initials === "") {
+        alert("Initials field cannot be blank.");
+    } else {
+        localStorage.setItem("local-initals", initials);
+    }       
+});
+
 function renderScore() {
     var initials = localStorage.getItem("local-initials");
     //var score = 
@@ -269,18 +281,6 @@ function renderScore() {
     //userInitialsSpan.textContent = initials;
     //userScoreSpan.textContent = 
 }
-
-submit.addEventListener("click", function(event) {
-    //event.preventDefault
-    var intials = document.querySelector("#initals").value;
-    //var score = 
-
-    if (initials --- "") {
-        alert("Initials field cannot be blank.");
-    } else {
-        localStorage.setItem("local-initals", initials);
-    }       
-});
 
 //display high scores on page
 renderScore();
