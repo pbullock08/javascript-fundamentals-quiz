@@ -7,9 +7,17 @@ header {
     height: 75px;
 }
 
-#score {
+header a {
     float: left;
     padding: 25px;
+    color: #361E75;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
     color: darkorchid;
 }
 
@@ -28,6 +36,10 @@ header {
     background-color: #361E75;
     color: #ffffff;
     border-radius: 5px;
+}
+
+.start-quiz:hover {
+    background-color: darkorchid;
 }
 
 /* styling for questions*/
@@ -57,10 +69,19 @@ header {
     margin-bottom: 5px;
 }
 
+.choice1:hover, .choice2:hover, .choice3:hover, .choice4:hover {
+    background-color: darkorchid;
+}
+
+
 .correct, .wrong {
+    text-align: left;
+    margin-left: 25%;
+    margin-right: 25%;
     border-top: solid 1px #3e3c3c;
     margin-top: 25px;
     color: #3e3c3c;
+    opacity: .5;
     display: none;
 }
 
@@ -90,21 +111,25 @@ header {
 .submit {
     padding: 5px;
     margin-left: 5px;
-    background-color: darkorchid;
+    background-color: #361e75;
     color: #ffffff;
     border-radius: 5px;
     margin-bottom: 5px;
 }
 
+.submit:hover {
+    background-color: darkorchid;
+}
+
 /*styling for high score bank*/
-.score-bank {
+#score-bank {
     text-align: left;
     margin-left: 33%;
     margin-right: 33%;
     display: none;
 }
 
-.score-bank h3{
+#score-bank h3{
     margin: 0px;
     padding-bottom: 10px;
 }
@@ -123,6 +148,14 @@ header {
     margin-bottom: 5px;
 }
 
+.back:hover, .clear:hover {
+    background-color: darkorchid;
+}
+
 .back {
     margin-right: 5px;
 }
+
+/* media query for display tablet*/
+
+/* media query for display phone*/

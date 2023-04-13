@@ -1,4 +1,4 @@
-//add eventlistener to start quiz and timer while hiding first question
+//add eventlistener to start quiz and timer
 var startQuiz = document.querySelector(".start-quiz");
 startQuiz.addEventListener("click", setTime);
 
@@ -79,10 +79,10 @@ var option2 = document.querySelector(".choice2");
 var option3 = document.querySelector(".choice3");
 var option4 = document.querySelector(".choice4");
 
-var correct = document.querySelector(".correct");
-var wrong = document.querySelector(".wrong");
+var correct = document.querySelector(".correct")
+var wrong = document.querySelector(".wrong")
 
-//add additional question and answers 
+//add additional question and answers to quiz
 var boxEl = document.querySelector(".quiz");
 var questionIndex = 0;
 
@@ -102,10 +102,12 @@ function switchContent() {
     option4.textContent = quizKey[questionIndex].choice4;
 }
 
+//assess user input for correct or wrong and log scores based on getting to the last question or timing out (time >= 0)
 option1.addEventListener("click", select1);
 function select1() {
     alert ("clicked");
     wrong.setAttribute("style", "display:block");
+    correct.setAttribute("style", "display:none");
     if (timeLeft >= 10) {
         timeLeft -= 10;
     } else {
@@ -128,6 +130,7 @@ function select2() {
     if (option2.textContent === "2. curly brackets") {
         alert ("clicked");
         correct.setAttribute("style", "display:block");
+        wrong.setAttribute("style", "display:none");
         questionIndex++;
         if (questionIndex >= quizKey.length) {
             clearInterval(timerInterval);
@@ -141,6 +144,7 @@ function select2() {
     } else {
         alert ("clicked");
         wrong.setAttribute("style", "display:block");
+        correct.setAttribute("style", "display:none");
         if (timeLeft >= 10) {
             timeLeft -= 10;
         } else {
@@ -164,6 +168,7 @@ function select3() {
     if (option3.textContent === "3. alerts" || option3.textContent === "3. quotes") {
         alert ("clicked");
         correct.setAttribute("style", "display:block");
+        wrong.setAttribute("style", "display:none");
         questionIndex++;
         if (questionIndex >= quizKey.length) {
             clearInterval(timerInterval);
@@ -177,6 +182,7 @@ function select3() {
     } else {
         alert ("clicked");
         wrong.setAttribute("style", "display:block");
+        correct.setAttribute("style", "display:none");
         if (timeLeft >= 10) {
             timeLeft -= 10;
         } else {
@@ -200,6 +206,7 @@ function select4() {
     if (option4.textContent === "4. all of the above" || option4.textContent === "4. console log") {
         alert ("clicked");
         correct.setAttribute("style", "display:block");
+        wrong.setAttribute("style", "display:none");
         questionIndex++;
         if (questionIndex >= quizKey.length) {
             clearInterval(timerInterval);
@@ -213,6 +220,7 @@ function select4() {
     } else {
         alert ("clicked");
         wrong.setAttribute("style", "display:block");
+        correct.setAttribute("style", "display:none");
         if (timeLeft >= 10) {
             timeLeft -= 10;
         } else {
@@ -232,7 +240,6 @@ function select4() {
 }
 
 //log time finished/zeroed out on page
-
 function logScore() {
     quiz.setAttribute ("style", "display:none");
     var finalScore = document.querySelector(".finalscore");
@@ -241,6 +248,12 @@ function logScore() {
     var highScore = document.querySelector(".high-score");
     highScore.setAttribute ("style", "display:block");
 }
+
+//set timeout for right or wrong display 
+// setTimeout (function() {
+//     correct.setAttribute("style", "display:none");
+//     wrong.setAttribute("style", "display:none");
+// }, 1000);
 
 //log score and initials to local storage
 var initialInput = document.querySelector("#initals");
@@ -269,5 +282,5 @@ submit.addEventListener("click", function(event) {
     }       
 });
 
-//display local storage of high scores
+//display high scores on page
 renderScore();
