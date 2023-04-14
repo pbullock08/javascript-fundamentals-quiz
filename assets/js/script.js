@@ -41,7 +41,7 @@ var quizKey = [
         choice2: "2. curly brackets", 
         choice3: "3. parenthesis", 
         choice4: "4. square brackets",
-        answer: "2. curly brackets",
+        answer: "3. parenthesis",
     },
         
     {
@@ -116,19 +116,6 @@ function select1() {
 
 option2.addEventListener("click", select2);
 function select2() {
-    if (option2.textContent === "2. curly brackets") {
-        correct.setAttribute("style", "display:block");
-        wrong.setAttribute("style", "display:none");
-        questionIndex++;
-        if (questionIndex >= quizKey.length) {
-            clearInterval(timerInterval);
-            logScore();
-        }
-        if (timeLeft === 0) {
-            clearInterval(timerInterval);
-            logScore();
-        }
-    } else {
         wrong.setAttribute("style", "display:block");
         correct.setAttribute("style", "display:none");
         if (timeLeft >= 10) {
@@ -146,12 +133,11 @@ function select2() {
             clearInterval(timerInterval);
             logScore();
         }
-    }
 };
 
 option3.addEventListener("click", select3);
 function select3() {
-    if (option3.textContent === "3. alerts" || option3.textContent === "3. quotes") {
+    if (option3.textContent === "3. alerts" || option3.textContent === "3. parenthesis" || option3.textContent === "3. quotes") {
         correct.setAttribute("style", "display:block");
         wrong.setAttribute("style", "display:none");
         questionIndex++;
