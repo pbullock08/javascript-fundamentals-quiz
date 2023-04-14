@@ -1,14 +1,12 @@
-//add eventlistener to start quiz and timer
-var startQuiz = document.querySelector(".start-quiz");
-startQuiz.addEventListener("click", setTime);
-
+//eventlistener to start quiz and timer
 var timeEl = document.querySelector("#timer");
 var timeLeft = 75;
 var timerInterval = 0;
-
 var coverPage = document.querySelector("#cover-page");
 var quiz = document.querySelector(".quiz");
 
+var startQuiz = document.querySelector(".start-quiz");
+startQuiz.addEventListener("click", setTime);
 function setTime() {
     timerInterval = setInterval(function() {
         timeLeft--;
@@ -26,6 +24,7 @@ function setTime() {
     switchContent();
 };
 
+//quiz array and answer key
 var quizKey = [
     {
         question: "Commonly used data types DO NOT include:",
@@ -78,16 +77,13 @@ var option1 = document.querySelector(".choice1");
 var option2 = document.querySelector(".choice2");
 var option3 = document.querySelector(".choice3");
 var option4 = document.querySelector(".choice4");
-
 var correct = document.querySelector(".correct");
 var wrong = document.querySelector(".wrong");
 
-//add additional question and answers to quiz
-var boxEl = document.querySelector(".quiz");
+//add questions to quiz
 var questionIndex = 0;
-
+var boxEl = document.querySelector(".quiz");
 boxEl.addEventListener("click", switchContent);
-
 function switchContent() {
     questionsEl.textContent = quizKey[questionIndex].question;
     option1.textContent = quizKey[questionIndex].choice1;
@@ -223,10 +219,9 @@ function select4() {
     }
 };
 
-var highScore = document.querySelector(".high-score");
+//log time finished on page
 var finalScore = document.querySelector(".finalscore");
-
-//log time finished/zeroed out on page
+var highScore = document.querySelector(".high-score");
 function logScore() {
     quiz.setAttribute ("style", "display:none");
     timeEl.textContent = "Time: " + timeLeft;
@@ -234,33 +229,33 @@ function logScore() {
     highScore.setAttribute ("style", "display:block");
 };
 
+//hide right or wrong on mouseover 
 var choices = document.querySelector("#choices");
 var initialInput = document.querySelector("input");
-
 choices.addEventListener("mouseover", hideFeedback);
 initialInput.addEventListener("click", hideFeedback);
-
 function hideFeedback() {
     correct.setAttribute("style", "display:none");
     wrong.setAttribute("style", "display:none");
 };
 
-//push high score into array
-var submit = document.querySelector(".submit");
-var scoreBankEl = document.querySelector("#score-bank");
+//put score into local storage
 var scoreArray = [];
-
 function setScore () {
     localStorage.setItem("local-scoreArray", JSON.stringify(scoreArray));
 }
 
+//get user data once they submit initials 
+var submit = document.querySelector(".submit");
 var viewScores = document.querySelector("a");
+var scoreBankEl = document.querySelector("#score-bank");
 submit.addEventListener("click", highScoreLog);
-
 function highScoreLog() {
     highScore.setAttribute("style", "display:none");
     timeEl.setAttribute("style", "display:none");
     viewScores.setAttribute("style", "display:none");
+    correct.setAttribute("style", "display:none");
+    wrong.setAttribute("style", "display:none");
     scoreBankEl.setAttribute("style", "display:block");
 
     var userScores = {
@@ -285,9 +280,8 @@ function getScores() {
     }
 }
 
-var scoreDataEl = document.querySelector("#scoredata");
-
 //display scores on webpage 
+var scoreDataEl = document.querySelector("#scoredata");
 function renderScores() {
     for (var i=0; i < scoreArray.length; i++) {
         var score = scoreArray[i];
@@ -303,14 +297,12 @@ getScores();
 
 //when you click go back it reloads the webpage 
 var goBack = document.querySelector(".back");
-
 goBack.addEventListener("click", function() {
     location.reload()
 });
 
 //when you click clear scores it clears scores from display and local storage
 var clearScores = document.querySelector(".clear");
-
 clearScores.addEventListener("click", function() {
     scoreDataEl.innerHTML="";
     localStorage.clear();

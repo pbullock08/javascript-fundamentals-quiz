@@ -138,10 +138,18 @@ a:hover {
 }
 
 #scoredata {
-    background-color: #d7bfdc;
     margin-top: 0px;
     margin-bottom: 15px;
+    padding-left: 25px;
     width: 100%;
+}
+
+#scoredata li {
+    background-color: #d7bfdc;
+}
+
+#scoredata li:nth-child(odd) {
+    background-color: #f5f2b9;
 }
 
 .back, .clear {
@@ -190,6 +198,10 @@ a:hover {
 
     input {
         margin-bottom: 15px;
+    }
+
+    #scoredata {
+        width: 90%;
     }
     
     .back, .clear {
