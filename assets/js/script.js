@@ -245,73 +245,61 @@ function hideFeedback() {
     wrong.setAttribute("style", "display:none");
 };
 
-var scoreArray = [];
-var scoreDataEl = document.querySelector("#scoredata");
-
-//log score to webpage
-function displayScores() {
-    for (var i=0; i < scoreArray.length; i++) {
-        var score = scoreArray[i];
-
-        var li = document.createElement("li");
-        li.textContent = score.name + " - " + score.timeFinished;
-        //li.setAttribute("data-index", i);
-
-        scoreDataEl.appendChild(li);
-    }
-};
-console.log(displayScores());
-
+//push high score into array
+var submit = document.querySelector(".submit");
 var scoreBankEl = document.querySelector("#score-bank");
+var scoreArray = [];
 
-//get score out of local strorage 
-function renderScore() {
+function setScore () {
+    localStorage.setItem("local-scoreArray", JSON.stringify(scoreArray));
+}
+
+var viewScores = document.querySelector("a");
+submit.addEventListener("click", highScoreLog);
+
+function highScoreLog() {
     highScore.setAttribute("style", "display:none");
     timeEl.setAttribute("style", "display:none");
-    coverPage.setAttribute("style", "display:none");
-    quiz.setAttribute("style", "display:none");
-    correct.setAttribute("style", "display:none");
-    wrong.setAttribute("style", "display:none");
     viewScores.setAttribute("style", "display:none");
     scoreBankEl.setAttribute("style", "display:block");
 
-    var loggedScores = JSON.parse(localStorage.getItem("scoreArray"));
-    
-    if (loggedScores !== null) {
-        scoreArray = loggedScores;
+    var userScores = {
+        name: initialInput.value,
+        timeFinished: timeLeft
+    };
+
+    scoreArray.push(userScores);
+
+    setScore();
+    renderScores();
+};
+
+//get scores out of local storage 
+function getScores() {
+    var storedScores = JSON.parse(localStorage.getItem("local-scoreArray"));
+
+    if (storedScores !== null) {
+        scoreArray = storedScores;
     } else {
         return;
     }
-
-    displayScores();
 }
 
-console.log(displayScores());
+var scoreDataEl = document.querySelector("#scoredata");
 
-var submit = document.querySelector(".submit");
-var userScore = {
-    name: initialInput.value,
-    timeFinished: timeLeft
-};
+//display scores on webpage 
+function renderScores() {
+    for (var i=0; i < scoreArray.length; i++) {
+        var score = scoreArray[i];
+        
+        var li = document.createElement("li");
+        li.textContent = score.name + " - " + score.timeFinished;
+        
+        scoreDataEl.appendChild(li);
+    }
+}
 
-//once data is submitted it gets logged into local storage 
-submit.addEventListener("click", function(event) {
-    //event.preventDefault();
-    highScore.innerHTML = "";
-
-    if (userScore.name === "") {
-        //alert("Initials field cannot be blank.");
-    } else {
-        scoreArray.push(userScore);
-        localStorage.setItem("scoreArray", JSON.stringify(scoreArray));
-    }  
-
-    renderScore();
-    //logScore();
-});
-
-console.log(scoreArray);
-console.log(displayScores());
+getScores();
 
 //when you click go back it reloads the webpage 
 var goBack = document.querySelector(".back");
@@ -325,13 +313,19 @@ var clearScores = document.querySelector(".clear");
 
 clearScores.addEventListener("click", function() {
     scoreDataEl.innerHTML="";
-    localStorage.removeItem("local-userScore");
+    localStorage.clear();
 });
-
-var viewScores = document.querySelector("a");
 
 //when you click view scores you are taken to the highscores page 
 viewScores.addEventListener("click", function() {
-    renderScore();
-    //logScores();
+    highScore.setAttribute("style", "display:none");
+    timeEl.setAttribute("style", "display:none");
+    coverPage.setAttribute("style", "display:none");
+    quiz.setAttribute("style", "display:none");
+    correct.setAttribute("style", "display:none");
+    wrong.setAttribute("style", "display:none");
+    viewScores.setAttribute("style", "display:none");
+    scoreBankEl.setAttribute("style", "display:block");
+    getScores();
+    renderScores();
 });
