@@ -22,4 +22,4 @@ Please refer to the license in the repo.
 
 ## Deployed Application w/ Screenshot
 [Deployed Application](https://pbullock08.github.io/javascript-fundamentals-quiz/)
-![image](./assets/images/deployed-app.gif)
+![image](./assets/images/deployed.app.gif)
