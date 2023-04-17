@@ -1,4 +1,4 @@
-//eventlistener to start quiz and timer
+//variables and eventlistener to start quiz and timer
 var timeEl = document.querySelector("#timer");
 var timeLeft = 75;
 var timerInterval = 0;
@@ -72,6 +72,7 @@ var quizKey = [
     }
 ];
 
+//variables for quiz portion of website 
 var questionsEl = document.querySelector(".ask");
 var option1 = document.querySelector(".choice1");
 var option2 = document.querySelector(".choice2");
@@ -80,7 +81,7 @@ var option4 = document.querySelector(".choice4");
 var correct = document.querySelector(".correct");
 var wrong = document.querySelector(".wrong");
 
-//add questions to quiz
+//event listener to show additional questions in the quiz
 var questionIndex = 0;
 var boxEl = document.querySelector(".quiz");
 boxEl.addEventListener("click", switchContent);
@@ -92,7 +93,7 @@ function switchContent() {
     option4.textContent = quizKey[questionIndex].choice4;
 };
 
-//assess user input for correct or wrong and log scores based on getting to the last question or timing out (time >= 0)
+//assess user input for if the answer is correct or wrong and log scores based on getting to the last question or timing out (time >= 0)
 option1.addEventListener("click", select1);
 function select1() {
     wrong.setAttribute("style", "display:block");
@@ -114,6 +115,7 @@ function select1() {
     }
 };
 
+//repeated code for above for if choice 2 is the right or wrong answer and how the website should respond
 option2.addEventListener("click", select2);
 function select2() {
         wrong.setAttribute("style", "display:block");
@@ -135,6 +137,7 @@ function select2() {
         }
 };
 
+//repeated code for above for if choice 3 is the right or wrong answer and how the website should respond
 option3.addEventListener("click", select3);
 function select3() {
     if (option3.textContent === "3. alerts" || option3.textContent === "3. parenthesis" || option3.textContent === "3. quotes") {
@@ -170,6 +173,7 @@ function select3() {
     }
 };
 
+//repeated code for above for if choice 2 is the right or wrong answer and how the website should respond
 option4.addEventListener("click", select4);
 function select4() {
     if (option4.textContent === "4. all of the above" || option4.textContent === "4. console log") {
@@ -215,7 +219,7 @@ function logScore() {
     highScore.setAttribute ("style", "display:block");
 };
 
-//hide right or wrong on mouseover 
+//hide correct or wrong display on mouseover 
 var choices = document.querySelector("#choices");
 var initialInput = document.querySelector("input");
 choices.addEventListener("mouseover", hideFeedback);
@@ -231,7 +235,7 @@ function setScore () {
     localStorage.setItem("local-scoreArray", JSON.stringify(scoreArray));
 }
 
-//get user data once they submit initials 
+//variables and event listener to call the function to push scores into local storage and display them on the website once they submit their initials 
 var submit = document.querySelector(".submit");
 var viewScores = document.querySelector("a");
 var scoreBankEl = document.querySelector("#score-bank");
