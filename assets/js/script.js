@@ -8,7 +8,7 @@ var quiz = document.querySelector(".quiz");
 var startQuiz = document.querySelector(".start-quiz");
 startQuiz.addEventListener("click", setTime);
 function setTime() {
-    timerInterval = setInterval(function() {
+    timerInterval = setInterval(function () {
         timeLeft--;
         timeEl.textContent = "Time: " + timeLeft;
 
@@ -16,11 +16,11 @@ function setTime() {
             clearInterval(timerInterval);
             logScore();
         }
-    }, 1000); 
+    }, 1000);
 
     coverPage.innerHTML = "";
 
-    quiz.setAttribute ("style", "display:block");
+    quiz.setAttribute("style", "display:block");
     switchContent();
 };
 
@@ -28,45 +28,45 @@ function setTime() {
 var quizKey = [
     {
         question: "Commonly used data types DO NOT include:",
-        choice1: "1. strings", 
-        choice2: "2. booleans", 
-        choice3: "3. alerts", 
+        choice1: "1. strings",
+        choice2: "2. booleans",
+        choice3: "3. alerts",
         choice4: "4. numbers",
         answer: "3. alerts",
     },
-        
+
     {
         question: "The condition in an if/else statement is enclosed with ________.",
-        choice1: "1. quotes", 
-        choice2: "2. curly brackets", 
-        choice3: "3. parenthesis", 
+        choice1: "1. quotes",
+        choice2: "2. curly brackets",
+        choice3: "3. parenthesis",
         choice4: "4. square brackets",
         answer: "3. parenthesis",
     },
-        
+
     {
         question: "Arrays in JavaScript can be used to store ________.",
-        choice1: "1. numbers and strings", 
-        choice2: "2. other arrays", 
-        choice3: "3. booleans", 
+        choice1: "1. numbers and strings",
+        choice2: "2. other arrays",
+        choice3: "3. booleans",
         choice4: "4. all of the above",
         answer: "4. all of the above",
     },
-        
+
     {
         question: "String values must be enclosed within ________ when being assigned to values.",
-        choice1: "1. commas", 
-        choice2: "2. curly brackets", 
-        choice3: "3. quotes", 
+        choice1: "1. commas",
+        choice2: "2. curly brackets",
+        choice3: "3. quotes",
         choice4: "4. parenthesis",
         answer: "3. quotes",
     },
-        
+
     {
         question: "A very useful tool used during development and debugging for printing content to the debugger is:",
-        choice1: "1. JavaScript", 
-        choice2: "2. terminal/bash", 
-        choice3: "3. for loops", 
+        choice1: "1. JavaScript",
+        choice2: "2. terminal/bash",
+        choice3: "3. for loops",
         choice4: "4. console log",
         answer: "4. console log",
     }
@@ -118,23 +118,23 @@ function select1() {
 //repeated code for above for if choice 2 is the right or wrong answer and how the website should respond
 option2.addEventListener("click", select2);
 function select2() {
-        wrong.setAttribute("style", "display:block");
-        correct.setAttribute("style", "display:none");
-        if (timeLeft >= 10) {
-            timeLeft -= 10;
-        } else {
-            clearInterval(timerInterval);
-            logScore();
-        }
-        questionIndex++;
-        if (questionIndex >= quizKey.length) {
-            clearInterval(timerInterval);
-            logScore();
-        }
-        if (timeLeft === 0) {
-            clearInterval(timerInterval);
-            logScore();
-        }
+    wrong.setAttribute("style", "display:block");
+    correct.setAttribute("style", "display:none");
+    if (timeLeft >= 10) {
+        timeLeft -= 10;
+    } else {
+        clearInterval(timerInterval);
+        logScore();
+    }
+    questionIndex++;
+    if (questionIndex >= quizKey.length) {
+        clearInterval(timerInterval);
+        logScore();
+    }
+    if (timeLeft === 0) {
+        clearInterval(timerInterval);
+        logScore();
+    }
 };
 
 //repeated code for above for if choice 3 is the right or wrong answer and how the website should respond
@@ -213,10 +213,10 @@ function select4() {
 var finalScore = document.querySelector(".finalscore");
 var highScore = document.querySelector(".high-score");
 function logScore() {
-    quiz.setAttribute ("style", "display:none");
+    quiz.setAttribute("style", "display:none");
     timeEl.textContent = "Time: " + timeLeft;
-    finalScore.textContent = "Your final score is " + timeLeft +".";
-    highScore.setAttribute ("style", "display:block");
+    finalScore.textContent = "Your final score is " + timeLeft + ".";
+    highScore.setAttribute("style", "display:block");
 };
 
 //hide correct or wrong display on mouseover 
@@ -231,7 +231,7 @@ function hideFeedback() {
 
 //put score into local storage
 var scoreArray = [];
-function setScore () {
+function setScore() {
     localStorage.setItem("local-scoreArray", JSON.stringify(scoreArray));
 }
 
@@ -273,12 +273,12 @@ function getScores() {
 //display scores on webpage 
 var scoreDataEl = document.querySelector("#scoredata");
 function renderScores() {
-    for (var i=0; i < scoreArray.length; i++) {
+    for (var i = 0; i < scoreArray.length; i++) {
         var score = scoreArray[i];
-        
+
         var li = document.createElement("li");
         li.textContent = score.name + " - " + score.timeFinished;
-        
+
         scoreDataEl.appendChild(li);
     }
 }
@@ -287,19 +287,19 @@ getScores();
 
 //when you click go back it reloads the webpage 
 var goBack = document.querySelector(".back");
-goBack.addEventListener("click", function() {
+goBack.addEventListener("click", function () {
     location.reload()
 });
 
 //when you click clear scores it clears scores from display and local storage
 var clearScores = document.querySelector(".clear");
-clearScores.addEventListener("click", function() {
-    scoreDataEl.innerHTML="";
+clearScores.addEventListener("click", function () {
+    scoreDataEl.innerHTML = "";
     localStorage.clear();
 });
 
 //when you click view scores you are taken to the highscores page 
-viewScores.addEventListener("click", function() {
+viewScores.addEventListener("click", function () {
     highScore.setAttribute("style", "display:none");
     timeEl.setAttribute("style", "display:none");
     coverPage.setAttribute("style", "display:none");

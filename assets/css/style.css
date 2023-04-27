@@ -46,13 +46,13 @@ a:hover {
 
 /* styling for questions*/
 .quiz {
-   text-align: left;
-   margin-left: 25%;
-   margin-right: 25%;
-   display: none;
+    text-align: left;
+    margin-left: 25%;
+    margin-right: 25%;
+    display: none;
 }
 
-.ask{
+.ask {
     margin: 5px;
     height: 50px;
 }
@@ -62,7 +62,10 @@ a:hover {
     padding: 5px;
 }
 
-.choice1, .choice2, .choice3, .choice4 {
+.choice1,
+.choice2,
+.choice3,
+.choice4 {
     display: block;
     width: 100%;
     padding: 5px;
@@ -72,12 +75,16 @@ a:hover {
     margin-bottom: 5px;
 }
 
-.choice1:hover, .choice2:hover, .choice3:hover, .choice4:hover {
+.choice1:hover,
+.choice2:hover,
+.choice3:hover,
+.choice4:hover {
     background-color: darkorchid;
 }
 
 
-.correct, .wrong {
+.correct,
+.wrong {
     text-align: left;
     margin-left: 25%;
     margin-right: 25%;
@@ -96,7 +103,7 @@ a:hover {
     display: none;
 }
 
-.high-score h3{
+.high-score h3 {
     margin: 0px;
     padding-bottom: 10px;
 }
@@ -131,7 +138,7 @@ a:hover {
     display: none;
 }
 
-#score-bank h3{
+#score-bank h3 {
     margin: 0px;
     padding-bottom: 10px;
 }
@@ -151,7 +158,8 @@ a:hover {
     background-color: #f5f2b9;
 }
 
-.back, .clear {
+.back,
+.clear {
     padding: 5px;
     background-color: #361E75;
     color: #ffffff;
@@ -159,7 +167,8 @@ a:hover {
     margin-bottom: 5px;
 }
 
-.back:hover, .clear:hover {
+.back:hover,
+.clear:hover {
     background-color: darkorchid;
 }
 
@@ -171,21 +180,28 @@ a:hover {
 @media screen and (max-width: 992px) {
     #cover-page p {
         margin-bottom: 25px;
-       }
+    }
 
-   .quiz, .high-score, .correct, .wrong {
-    margin-left: 15%;
-    margin-right: 15%;
-   }
+    .quiz,
+    .high-score,
+    .correct,
+    .wrong {
+        margin-left: 15%;
+        margin-right: 15%;
+    }
 }
 
 /* media queries for phone*/
 @media screen and (max-width: 778px) {
-   #cover-page p {
-    margin-bottom: 25px;
-   }
-   
-    .quiz, .high-score, .correct, .wrong, #score-bank {
+    #cover-page p {
+        margin-bottom: 25px;
+    }
+
+    .quiz,
+    .high-score,
+    .correct,
+    .wrong,
+    #score-bank {
         margin-left: 5%;
         margin-right: 5%;
     }
@@ -202,8 +218,9 @@ a:hover {
     #scoredata {
         width: 90%;
     }
-    
-    .back, .clear {
+
+    .back,
+    .clear {
         display: block;
         width: max-content;
     }
